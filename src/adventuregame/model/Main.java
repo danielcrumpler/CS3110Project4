@@ -1,4 +1,5 @@
-package model;
+package adventuregame.model;
+
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

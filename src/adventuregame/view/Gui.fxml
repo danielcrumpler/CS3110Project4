@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="guiPane" prefHeight="550.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs3152.worldnav.controller.WorldController">
+<AnchorPane fx:id="guiPane" prefHeight="550.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adventuregame.controller.Controller">
    <children>
       <ImageView fx:id="locationImage" fitHeight="150.0" fitWidth="250.0" layoutX="250.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="85.0">
          <image>
