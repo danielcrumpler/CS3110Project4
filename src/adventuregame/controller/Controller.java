@@ -96,7 +96,7 @@ public class Controller {
 
 	@FXML
 	void createGame(ActionEvent event) {
-
+		
 	}
 
 	@FXML
