@@ -26,17 +26,17 @@
       </Label>
       <ScrollPane fx:id="locationItemsScrollPane" layoutX="385.0" layoutY="85.0" prefHeight="150.0" prefWidth="150.0" visible="false" AnchorPane.rightAnchor="20.0">
          <content>
-            <VBox fx:id="locationItemsVBox" prefHeight="150.0" prefWidth="150.0" />
+            <VBox fx:id="locationItemsVBox" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="150.0" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="inventoryItemsScrollPane" layoutX="28.0" layoutY="85.0" prefHeight="150.0" prefWidth="150.0" visible="false" AnchorPane.leftAnchor="20.0">
          <content>
-            <VBox fx:id="inventoryItemsVBox" prefHeight="150.0" prefWidth="150.0" />
+            <VBox fx:id="inventoryItemsVBox" alignment="TOP_CENTER" prefHeight="150.0" prefWidth="150.0" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="routesFromLocationScrollPane" layoutX="175.0" layoutY="336.0" prefHeight="150.0" prefWidth="250.0" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <content>
-            <VBox fx:id="routesFromLocationVBox" prefHeight="150.0" prefWidth="250.0" />
+            <VBox fx:id="routesFromLocationVBox" alignment="TOP_CENTER" prefHeight="151.0" prefWidth="350.0" />
          </content>
       </ScrollPane>
       <Label fx:id="routesLabel" alignment="CENTER" layoutX="191.0" layoutY="355.0" text="Where do you want to go next?" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="360.0" />

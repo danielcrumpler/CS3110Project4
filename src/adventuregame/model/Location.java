@@ -15,16 +15,28 @@ public class Location {
 	private ArrayList<Item> items;
 	private ArrayList<String> paths;
 	private boolean locked;
+	private String name;
 
 	/**
 	 * Create a new Location
 	 * 
+	 * @param name   the name of the location
 	 * @param locked if the location is accessible
 	 */
-	public Location(boolean locked) {
+	public Location(String name, boolean locked) {
 		this.items = new ArrayList<Item>();
 		this.paths = new ArrayList<String>();
 		this.setLocked(locked);
+		this.name = name;
+	}
+
+	/**
+	 * Gets the name of the location
+	 * 
+	 * @return the name of the location
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 	/**
@@ -129,9 +141,9 @@ public class Location {
 	/**
 	 * Adds the name of a location that can be accessed from a current location
 	 * 
-	 * @precondition !locatioName.isEmpty() && locationName != null
+	 * @precondition !locationName.isEmpty() && locationName != null
 	 * @postcondition getItems().size += 1 && getPaths().contains(locationName)
-	 * @param locationName
+	 * @param locationName the location name
 	 * @return if added to paths
 	 */
 	public boolean addPath(String locationName) {

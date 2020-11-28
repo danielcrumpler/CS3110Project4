@@ -1,5 +1,8 @@
 package adventuregame.controller;
 
+import adventuregame.model.Game;
+import adventuregame.model.Item;
+import adventuregame.model.Location;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,8 +14,11 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class Controller {
+
+	private Game game;
 
 	@FXML
 	private AnchorPane guiPane;
@@ -90,6 +96,11 @@ public class Controller {
 	private Button loadGameButton;
 
 	@FXML
+	void initialize() {
+		this.game = new Game();
+	}
+
+	@FXML
 	public void closeInventory(ActionEvent event) {
 		this.closeInventoryButton.setVisible(false);
 		this.openInventoryButton.setVisible(true);
@@ -100,6 +111,8 @@ public class Controller {
 
 	@FXML
 	public void createGame(ActionEvent event) {
+		this.game.loadWorldOne();
+		this.update();
 		this.titleLabel.setVisible(false);
 		this.loadGameButton.setVisible(false);
 		this.createGameButton.setVisible(false);
@@ -164,4 +177,35 @@ public class Controller {
 
 	}
 
+	public Game getGame() {
+		return this.game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	private void update() {
+		this.locationLabel.textProperty().set(this.game.getCurrentLocation().getName());
+		this.locationItemsVBox.getChildren().clear();
+		for (Item currItem : this.game.getCurrentLocation().getItems()) {
+			Label label = new Label(currItem.getName() + ": " + currItem.getDescription());
+			this.locationItemsVBox.getChildren().add(label);
+		}
+		this.routesFromLocationVBox.getChildren().clear();
+		for (String currLocation : this.game.getCurrentLocation().getPaths()) {
+			Button button = new Button(currLocation);
+			button.setMinWidth(250);
+			button.setFont(Font.font(16));
+			button.setOnAction(event -> {
+				for (Location location : this.game.getWorld().getLocations()) {
+					if (location.getName() == currLocation) {
+						this.game.setCurrentLocation(location);
+						this.update();
+					}
+				}
+			});
+			this.routesFromLocationVBox.getChildren().add(button);
+		}
+	}
 }
