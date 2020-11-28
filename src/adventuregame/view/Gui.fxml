@@ -15,38 +15,38 @@
 
 <AnchorPane fx:id="guiPane" prefHeight="550.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adventuregame.controller.Controller">
    <children>
-      <ImageView fx:id="locationImage" fitHeight="150.0" fitWidth="250.0" layoutX="250.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="85.0">
+      <ImageView fx:id="locationImage" fitHeight="150.0" fitWidth="250.0" layoutX="250.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="85.0">
          <image>
             <Image url="@../../../../../Downloads/profile_091530.jpg" />
          </image></ImageView>
-      <Label fx:id="locationLabel" alignment="CENTER" text="Name of Location" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <Label fx:id="locationLabel" alignment="CENTER" text="Name of Location" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="locationItemsScrollPane" layoutX="385.0" layoutY="85.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.rightAnchor="20.0">
+      <ScrollPane fx:id="locationItemsScrollPane" layoutX="385.0" layoutY="85.0" prefHeight="150.0" prefWidth="150.0" visible="false" AnchorPane.rightAnchor="20.0">
          <content>
             <VBox fx:id="locationItemsVBox" prefHeight="150.0" prefWidth="150.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="inventoryItemsScrollPane" layoutX="28.0" layoutY="85.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.leftAnchor="20.0">
+      <ScrollPane fx:id="inventoryItemsScrollPane" layoutX="28.0" layoutY="85.0" prefHeight="150.0" prefWidth="150.0" visible="false" AnchorPane.leftAnchor="20.0">
          <content>
             <VBox fx:id="inventoryItemsVBox" prefHeight="150.0" prefWidth="150.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="routesFromLocationScrollPane" layoutX="175.0" layoutY="336.0" prefHeight="150.0" prefWidth="250.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+      <ScrollPane fx:id="routesFromLocationScrollPane" layoutX="175.0" layoutY="336.0" prefHeight="150.0" prefWidth="250.0" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <content>
             <VBox fx:id="routesFromLocationVBox" prefHeight="150.0" prefWidth="250.0" />
          </content>
       </ScrollPane>
-      <Label fx:id="routesLabel" alignment="CENTER" layoutX="191.0" layoutY="355.0" text="Where do you want to go next?" textAlignment="CENTER" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="360.0" />
-      <Label fx:id="locationItemsLabel" alignment="CENTER" layoutX="441.0" layoutY="65.0" minWidth="150.0" text="Items at Location" textAlignment="CENTER" AnchorPane.rightAnchor="20.0" />
-      <Label fx:id="inventoryItemsLabel" alignment="CENTER" layoutX="81.0" layoutY="65.0" minWidth="150.0" text="Items in Inventory" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" />
+      <Label fx:id="routesLabel" alignment="CENTER" layoutX="191.0" layoutY="355.0" text="Where do you want to go next?" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="360.0" />
+      <Label fx:id="locationItemsLabel" alignment="CENTER" layoutX="441.0" layoutY="65.0" minWidth="150.0" text="Items at Location" textAlignment="CENTER" visible="false" AnchorPane.rightAnchor="20.0" />
+      <Label fx:id="inventoryItemsLabel" alignment="CENTER" layoutX="81.0" layoutY="65.0" minWidth="150.0" text="Items in Inventory" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="20.0" />
       <Button fx:id="openInventoryButton" layoutX="69.0" layoutY="243.0" minWidth="150.0" mnemonicParsing="false" onAction="#openInventory" text="Open Inventory" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="240.0" />
-      <Button fx:id="pickupItemButton" layoutX="429.0" layoutY="243.0" minWidth="150.0" mnemonicParsing="false" onAction="#pickupItem" text="Pickup Item" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="240.0" />
-      <Button fx:id="closeInventoryButton" layoutX="79.0" layoutY="253.0" minWidth="150.0" mnemonicParsing="false" onAction="#closeInventory" text="Close Inventory" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="240.0" />
-      <Button fx:id="useItemButton" layoutX="79.0" layoutY="253.0" minWidth="150.0" mnemonicParsing="false" onAction="#useItem" text="Use Selected Item" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="270.0" />
-      <MenuBar fx:id="menuBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="pickupItemButton" layoutX="429.0" layoutY="243.0" minWidth="150.0" mnemonicParsing="false" onAction="#pickupItem" text="Pickup Item" visible="false" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="240.0" />
+      <Button fx:id="closeInventoryButton" layoutX="79.0" layoutY="253.0" minWidth="150.0" mnemonicParsing="false" onAction="#closeInventory" text="Close Inventory" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="240.0" />
+      <Button fx:id="useItemButton" layoutX="79.0" layoutY="253.0" minWidth="150.0" mnemonicParsing="false" onAction="#useItem" text="Use Selected Item" visible="false" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="270.0" />
+      <MenuBar fx:id="menuBar" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="gameMenu" mnemonicParsing="false" text="Game">
             <items>
@@ -70,16 +70,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="261.0" layoutY="152.0" text="Adventure Game" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="261.0" layoutY="152.0" text="Adventure Game" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <Button fx:id="createGameButton" layoutX="249.0" layoutY="142.0" mnemonicParsing="false" onAction="#createGame" text="Create Game" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="200.0">
+      <Button fx:id="createGameButton" layoutX="249.0" layoutY="142.0" mnemonicParsing="false" onAction="#createGame" text="Create Game" textAlignment="CENTER" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="220.0">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="loadGameButton" layoutX="200.0" layoutY="196.0" mnemonicParsing="false" onAction="#loadGame" text="Load Game" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="250.0">
+      <Button fx:id="loadGameButton" layoutX="200.0" layoutY="196.0" mnemonicParsing="false" onAction="#loadGame" text="Load Game" textAlignment="CENTER" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="270.0">
          <font>
             <Font size="18.0" />
          </font>

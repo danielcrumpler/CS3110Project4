@@ -90,47 +90,77 @@ public class Controller {
 	private Button loadGameButton;
 
 	@FXML
-	void closeInventory(ActionEvent event) {
+	public void closeInventory(ActionEvent event) {
+		this.closeInventoryButton.setVisible(false);
+		this.openInventoryButton.setVisible(true);
+		this.inventoryItemsScrollPane.setVisible(false);
+		this.inventoryItemsLabel.setVisible(false);
+		this.useItemButton.setVisible(false);
+	}
+
+	@FXML
+	public void createGame(ActionEvent event) {
+		this.titleLabel.setVisible(false);
+		this.loadGameButton.setVisible(false);
+		this.createGameButton.setVisible(false);
+		this.locationItemsLabel.setVisible(true);
+		this.locationLabel.setVisible(true);
+		this.routesLabel.setVisible(true);
+		this.locationItemsScrollPane.setVisible(true);
+		this.routesFromLocationScrollPane.setVisible(true);
+		this.openInventoryButton.setVisible(true);
+		this.pickupItemButton.setVisible(true);
+		this.menuBar.setVisible(true);
+		this.locationImage.setVisible(true);
+	}
+
+	@FXML
+	public void loadGame(ActionEvent event) {
+		this.titleLabel.setVisible(false);
+		this.loadGameButton.setVisible(false);
+		this.createGameButton.setVisible(false);
+		this.locationItemsLabel.setVisible(true);
+		this.locationLabel.setVisible(true);
+		this.routesLabel.setVisible(true);
+		this.locationItemsScrollPane.setVisible(true);
+		this.routesFromLocationScrollPane.setVisible(true);
+		this.openInventoryButton.setVisible(true);
+		this.pickupItemButton.setVisible(true);
+		this.menuBar.setVisible(true);
+		this.locationImage.setVisible(true);
+	}
+
+	@FXML
+	public void loadGameMenu(ActionEvent event) {
 
 	}
 
 	@FXML
-	void createGame(ActionEvent event) {
-		
+	public void openInventory(ActionEvent event) {
+		this.openInventoryButton.setVisible(false);
+		this.closeInventoryButton.setVisible(true);
+		this.inventoryItemsScrollPane.setVisible(true);
+		this.inventoryItemsLabel.setVisible(true);
+		this.useItemButton.setVisible(true);
 	}
 
 	@FXML
-	void loadGame(ActionEvent event) {
-
-	}
-
-	@FXML
-	void loadGameMenu(ActionEvent event) {
-
-	}
-
-	@FXML
-	void openInventory(ActionEvent event) {
+	public void pickupItem(ActionEvent event) {
 
 	}
 
 	@FXML
-	void pickupItem(ActionEvent event) {
+	public void quitGameMenu(ActionEvent event) {
+		System.exit(0);
+	}
+
+	@FXML
+	public void saveGameMenu(ActionEvent event) {
 
 	}
 
 	@FXML
-	void quitGameMenu(ActionEvent event) {
-
-	}
-
-	@FXML
-	void saveGameMenu(ActionEvent event) {
-
-	}
-
-	@FXML
-	void useItem(ActionEvent event) {
+	public void useItem(ActionEvent event) {
 
 	}
 
