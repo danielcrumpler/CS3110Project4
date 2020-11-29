@@ -71,7 +71,7 @@ public class Location {
 	 * 
 	 * @precondition none
 	 * @postcondition isLocked() = locked
-	 * @param locked if the location is accessible
+	 * @param locked if the location is inaccessible
 	 */
 	public void setLocked(boolean locked) {
 		this.locked = locked;

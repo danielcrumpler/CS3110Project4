@@ -3,6 +3,7 @@ package adventuregame.controller;
 import adventuregame.model.Game;
 import adventuregame.model.Item;
 import adventuregame.model.Location;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -159,6 +160,9 @@ public class Controller {
 
 	@FXML
 	public void pickupItem(ActionEvent event) {
+		this.game.getCollectedItems().add(this.game.getCurrentLocation().getItems().get(0));
+		this.game.getCurrentLocation().getItems().clear();
+		this.update();
 
 	}
 
@@ -191,6 +195,10 @@ public class Controller {
 		for (Item currItem : this.game.getCurrentLocation().getItems()) {
 			Label label = new Label(currItem.getName() + ": " + currItem.getDescription());
 			this.locationItemsVBox.getChildren().add(label);
+		}
+		for (Item currItem : this.game.getCollectedItems()) {
+			Label label = new Label(currItem.getName() + ": " + currItem.getDescription());
+			this.inventoryItemsVBox.getChildren().add(label);
 		}
 		this.routesFromLocationVBox.getChildren().clear();
 		for (String currLocation : this.game.getCurrentLocation().getPaths()) {
