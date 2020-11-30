@@ -11,7 +11,9 @@ public class Location {
 	private static final String DESCRIPTION_CANNOT_BE_EMPTY = "description cannot be empty";
 	private static final String NAME_CANNOT_BE_EMPTY = "name cannot be empty";
 	private static final String DESCRIPTION_CANNOT_BE_NULL = "description cannot be null";
+	private static final String ITEM_CANNOT_BE_NULL = "Unlock item cannot be null";
 	private static final String NAME_CANNOT_BE_NULL = "name cannot be null";
+	private static final String URL_CANNOT_BE_NULL = "URLcannot be null";
 	private ArrayList<Item> items;
 	private ArrayList<String> paths;
 	private boolean locked;
@@ -28,6 +30,15 @@ public class Location {
 	 * @param unlockItem the item that is used to unlock the map
 	 */
 	public Location(String name, String url, boolean locked, String unlockItem) {
+		if (name == null) {
+			throw new IllegalArgumentException(NAME_CANNOT_BE_NULL);
+		}
+		if (unlockItem == null) {
+			throw new IllegalArgumentException(ITEM_CANNOT_BE_NULL);
+		}
+		if (url == null) {
+			throw new IllegalArgumentException(URL_CANNOT_BE_NULL);
+		}
 		this.items = new ArrayList<Item>();
 		this.paths = new ArrayList<String>();
 		this.setLocked(locked);
