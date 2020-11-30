@@ -61,15 +61,17 @@ public class Game {
 	 */
 	public void loadWorldOne() {
 		World newWorld = new World();
-		newWorld.addLocation("The Beach", "images/beach.jpg", false);
+		newWorld.addLocation("The Beach", "images/beach.jpg", true, "Plank");
 		newWorld.getLocations().get(0).addItem("Sea Shell", "A sea shell");
 		newWorld.getLocations().get(0).addPath("The Path");
-		newWorld.addLocation("The Path", "images/path.jpg", false);
+		newWorld.addLocation("The Path", "images/path.jpg", true, "Axe");
 		newWorld.getLocations().get(1).addItem("Plank", "A plank");
 		newWorld.getLocations().get(1).addPath("The Beach");
 		newWorld.getLocations().get(1).addPath("The Street");
-		newWorld.addLocation("The Street", "images/street.jpg", false);
+		newWorld.addLocation("The Street", "images/street.jpg", false, "Nothing");
 		newWorld.getLocations().get(2).addItem("Bottle", "A plastic bottle that looks to be trash.");
+		newWorld.getLocations().get(2).addItem("Napkin", "A paper napkin that looks to be trash.");
+		newWorld.getLocations().get(2).addItem("Axe", "A metal axe.");
 		newWorld.getLocations().get(2).addPath("The Path");
 		this.world = newWorld;
 		this.currentLocation = this.world.getLocations().get(2);

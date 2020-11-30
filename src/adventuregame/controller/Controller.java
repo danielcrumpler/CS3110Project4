@@ -7,6 +7,7 @@ import adventuregame.model.Item;
 import adventuregame.model.Location;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -34,18 +35,12 @@ public class Controller {
 	@FXML
 	private Label locationLabel;
 
-	@FXML
-	private ScrollPane locationItemsScrollPane;
+    @FXML
+    private ListView<String> locationItemsListView;
 
-	@FXML
-	private VBox locationItemsVBox;
-
-	@FXML
-	private ScrollPane inventoryItemsScrollPane;
-
-	@FXML
-	private VBox inventoryItemsVBox;
-
+    @FXML
+    private ListView<String> inventoryItemsListView;
+	
 	@FXML
 	private ScrollPane routesFromLocationScrollPane;
 
@@ -109,7 +104,7 @@ public class Controller {
 	public void closeInventory(ActionEvent event) {
 		this.closeInventoryButton.setVisible(false);
 		this.openInventoryButton.setVisible(true);
-		this.inventoryItemsScrollPane.setVisible(false);
+		this.inventoryItemsListView.setVisible(false);
 		this.inventoryItemsLabel.setVisible(false);
 		this.useItemButton.setVisible(false);
 	}
@@ -124,7 +119,7 @@ public class Controller {
 		this.locationItemsLabel.setVisible(true);
 		this.locationLabel.setVisible(true);
 		this.routesLabel.setVisible(true);
-		this.locationItemsScrollPane.setVisible(true);
+		this.locationItemsListView.setVisible(true);
 		this.routesFromLocationScrollPane.setVisible(true);
 		this.openInventoryButton.setVisible(true);
 		this.pickupItemButton.setVisible(true);
@@ -134,13 +129,14 @@ public class Controller {
 
 	@FXML
 	public void loadGame(ActionEvent event) {
+		
 		this.titleLabel.setVisible(false);
 		this.loadGameButton.setVisible(false);
 		this.createGameButton.setVisible(false);
 		this.locationItemsLabel.setVisible(true);
 		this.locationLabel.setVisible(true);
 		this.routesLabel.setVisible(true);
-		this.locationItemsScrollPane.setVisible(true);
+		this.locationItemsListView.setVisible(true);
 		this.routesFromLocationScrollPane.setVisible(true);
 		this.openInventoryButton.setVisible(true);
 		this.pickupItemButton.setVisible(true);
@@ -157,17 +153,17 @@ public class Controller {
 	public void openInventory(ActionEvent event) {
 		this.openInventoryButton.setVisible(false);
 		this.closeInventoryButton.setVisible(true);
-		this.inventoryItemsScrollPane.setVisible(true);
+		this.inventoryItemsListView.setVisible(true);
 		this.inventoryItemsLabel.setVisible(true);
 		this.useItemButton.setVisible(true);
 	}
 
 	@FXML
 	public void pickupItem(ActionEvent event) {
-		this.game.getCollectedItems().add(this.game.getCurrentLocation().getItems().get(0));
-		this.game.getCurrentLocation().getItems().clear();
+		int index = this.locationItemsListView.getSelectionModel().getSelectedIndex();
+		this.game.getCollectedItems().add(this.game.getCurrentLocation().getItems().get(index));
+		this.game.getCurrentLocation().getItems().remove(index);
 		this.update();
-
 	}
 
 	@FXML
@@ -182,7 +178,13 @@ public class Controller {
 
 	@FXML
 	public void useItem(ActionEvent event) {
-
+		int index = this.inventoryItemsListView.getSelectionModel().getSelectedIndex();
+		for (Location location : this.game.getWorld().getLocations()) {
+			if (this.game.getCollectedItems().get(index).getName() == location.getUnlockItem()) {
+				location.setLocked(false);
+			}
+		}
+		this.update();
 	}
 
 	public Game getGame() {
@@ -195,43 +197,45 @@ public class Controller {
 
 	private void update() {
 		this.locationLabel.textProperty().set(this.game.getCurrentLocation().getName());
-		this.updateLocationItemsVBox();
-		this.updateInventoryVBox();
+		this.updateLocationItemsListView();
+		this.updateInventoryListView();
 		this.updateRoutesVBox();
 		this.updateImageView();
 	}
 
-	private void updateLocationItemsVBox() {
-		this.locationItemsVBox.getChildren().clear();
+	private void updateLocationItemsListView() {
+		this.locationItemsListView.getItems().clear();
 		for (Item currItem : this.game.getCurrentLocation().getItems()) {
-			Label label = new Label(currItem.getName() + COLON_SPACE + currItem.getDescription());
-			this.locationItemsVBox.getChildren().add(label);
+			this.locationItemsListView.getItems().add(currItem.getName() + COLON_SPACE + currItem.getDescription());
 		}
 	}
 
-	private void updateInventoryVBox() {
-		this.inventoryItemsVBox.getChildren().clear();
+	private void updateInventoryListView() {
+		this.inventoryItemsListView.getItems().clear();
 		for (Item currItem : this.game.getCollectedItems()) {
-			Label label = new Label(currItem.getName() + COLON_SPACE + currItem.getDescription());
-			this.inventoryItemsVBox.getChildren().add(label);
+			this.inventoryItemsListView.getItems().add(currItem.getName() + COLON_SPACE + currItem.getDescription());
 		}
 	}
 
 	private void updateRoutesVBox() {
 		this.routesFromLocationVBox.getChildren().clear();
 		for (String currLocation : this.game.getCurrentLocation().getPaths()) {
-			Button button = new Button(currLocation);
-			button.setMinWidth(250);
-			button.setFont(Font.font(16));
-			button.setOnAction(event -> {
-				for (Location location : this.game.getWorld().getLocations()) {
-					if (location.getName() == currLocation) {
-						this.game.setCurrentLocation(location);
-						this.update();
-					}
+			for (Location location : this.game.getWorld().getLocations()) {
+				if (location.getName() == currLocation && !location.isLocked()) {
+					Button button = new Button(currLocation);
+					button.setMinWidth(250);
+					button.setFont(Font.font(16));
+					button.setOnAction(event -> {
+						for (Location secondLocation : this.game.getWorld().getLocations()) {
+							if (secondLocation.getName() == currLocation) {
+								this.game.setCurrentLocation(secondLocation);
+								this.update();
+							}
+						}
+					});
+					this.routesFromLocationVBox.getChildren().add(button);
 				}
-			});
-			this.routesFromLocationVBox.getChildren().add(button);
+			}
 		}
 	}
 

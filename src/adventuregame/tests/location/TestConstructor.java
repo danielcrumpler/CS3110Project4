@@ -1,23 +1,26 @@
 package adventuregame.tests.location;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
 import adventuregame.model.Location;
 
 class TestConstructor {
 
 	@Test
-	void testPositive() {
-		Location lockedLocation = new Location("Temple", true);
-		Location unlockedLocation = new Location("Beach", false);
+	void testIsLocked() {
+		Location lockedLocation = new Location("Temple", "noimg.png", true, "Not a thing");
 		assertEquals("Temple", lockedLocation.getName());
-		assertEquals("Beach", unlockedLocation.getName());
 		assertTrue(lockedLocation.isLocked());
+	}
+	
+	@Test
+	void testIsNotLocked() {
+		Location unlockedLocation = new Location("Beach", "no.png", false, "Nothing");
+		assertEquals("Beach", unlockedLocation.getName());
 		assertFalse(unlockedLocation.isLocked());
-		assertTrue(lockedLocation.getItems().isEmpty());
-		assertTrue(lockedLocation.getPaths().isEmpty());
 	}
 
 }

@@ -17,20 +17,23 @@ public class Location {
 	private boolean locked;
 	private String name;
 	private String imageUrl;
+	private String unlockItem;
 
 	/**
 	 * Create a new Location
 	 * 
-	 * @param name   the name of the location
-	 * @param url    the url of the image of the location
-	 * @param locked if the location is accessible
+	 * @param name       the name of the location
+	 * @param url        the url of the image of the location
+	 * @param locked     if the location is accessible
+	 * @param unlockItem the item that is used to unlock the map
 	 */
-	public Location(String name, String url, boolean locked) {
+	public Location(String name, String url, boolean locked, String unlockItem) {
 		this.items = new ArrayList<Item>();
 		this.paths = new ArrayList<String>();
 		this.setLocked(locked);
 		this.name = name;
 		this.imageUrl = url;
+		this.unlockItem = unlockItem;
 	}
 
 	/**
@@ -67,6 +70,15 @@ public class Location {
 	 */
 	public ArrayList<String> getPaths() {
 		return this.paths;
+	}
+
+	/**
+	 * Gets the Item that unlocks a path for the location
+	 * 
+	 * @return the item name that unlocks path
+	 */
+	public String getUnlockItem() {
+		return this.unlockItem;
 	}
 
 	/**
