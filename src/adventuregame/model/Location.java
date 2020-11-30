@@ -16,18 +16,21 @@ public class Location {
 	private ArrayList<String> paths;
 	private boolean locked;
 	private String name;
+	private String imageUrl;
 
 	/**
 	 * Create a new Location
 	 * 
 	 * @param name   the name of the location
+	 * @param url    the url of the image of the location
 	 * @param locked if the location is accessible
 	 */
-	public Location(String name, boolean locked) {
+	public Location(String name, String url, boolean locked) {
 		this.items = new ArrayList<Item>();
 		this.paths = new ArrayList<String>();
 		this.setLocked(locked);
 		this.name = name;
+		this.imageUrl = url;
 	}
 
 	/**
@@ -37,6 +40,15 @@ public class Location {
 	 */
 	public String getName() {
 		return this.name;
+	}
+
+	/**
+	 * Gets the url for the image for the location
+	 * 
+	 * @return the url of the image of the location
+	 */
+	public String getImageUrl() {
+		return this.imageUrl;
 	}
 
 	/**

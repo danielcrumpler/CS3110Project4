@@ -1,9 +1,10 @@
 package adventuregame.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import adventuregame.model.Game;
 import adventuregame.model.Item;
 import adventuregame.model.Location;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,12 +13,15 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class Controller {
+
+	private static final String COLON_SPACE = ": ";
 
 	private Game game;
 
@@ -191,15 +195,29 @@ public class Controller {
 
 	private void update() {
 		this.locationLabel.textProperty().set(this.game.getCurrentLocation().getName());
+		this.updateLocationItemsVBox();
+		this.updateInventoryVBox();
+		this.updateRoutesVBox();
+		this.updateImageView();
+	}
+
+	private void updateLocationItemsVBox() {
 		this.locationItemsVBox.getChildren().clear();
 		for (Item currItem : this.game.getCurrentLocation().getItems()) {
-			Label label = new Label(currItem.getName() + ": " + currItem.getDescription());
+			Label label = new Label(currItem.getName() + COLON_SPACE + currItem.getDescription());
 			this.locationItemsVBox.getChildren().add(label);
 		}
+	}
+
+	private void updateInventoryVBox() {
+		this.inventoryItemsVBox.getChildren().clear();
 		for (Item currItem : this.game.getCollectedItems()) {
-			Label label = new Label(currItem.getName() + ": " + currItem.getDescription());
+			Label label = new Label(currItem.getName() + COLON_SPACE + currItem.getDescription());
 			this.inventoryItemsVBox.getChildren().add(label);
 		}
+	}
+
+	private void updateRoutesVBox() {
 		this.routesFromLocationVBox.getChildren().clear();
 		for (String currLocation : this.game.getCurrentLocation().getPaths()) {
 			Button button = new Button(currLocation);
@@ -214,6 +232,19 @@ public class Controller {
 				}
 			});
 			this.routesFromLocationVBox.getChildren().add(button);
+		}
+	}
+
+	private void updateImageView() {
+		if (this.game.getCurrentLocation().getImageUrl() != null) {
+			FileInputStream input = null;
+			try {
+				input = new FileInputStream(this.game.getCurrentLocation().getImageUrl());
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			Image image = new Image(input);
+			this.locationImage.setImage(image);
 		}
 	}
 }
