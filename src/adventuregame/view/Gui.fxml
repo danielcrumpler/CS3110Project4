@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,10 +14,7 @@
 
 <AnchorPane fx:id="guiPane" prefHeight="550.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adventuregame.controller.Controller">
    <children>
-      <ImageView fx:id="locationImage" fitHeight="150.0" fitWidth="250.0" layoutX="250.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="85.0">
-         <image>
-            <Image url="@../../../../../Downloads/profile_091530.jpg" />
-         </image></ImageView>
+      <ImageView fx:id="locationImage" fitHeight="150.0" fitWidth="250.0" layoutX="250.0" layoutY="150.0" pickOnBounds="true" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="85.0" />
       <Label fx:id="locationLabel" alignment="CENTER" text="Name of Location" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <font>
             <Font size="20.0" />
