@@ -1,6 +1,7 @@
 package adventuregame.tests.game;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+
 
 import org.junit.jupiter.api.Test;
 
@@ -14,21 +15,21 @@ class TestGetCollectedItems {
 		Game game = new Game();
 		assertEquals(0, game.getCollectedItems().size());
 	}
-	
+
 	@Test
 	void testGetCollectedItemsWithSingleItem() {
 		Game game = new Game();
-		Item jim = new Item("A", "AB");
+		Item jim = new Item("Aa", "ABa");
 		game.getCollectedItems().add(jim);
 		assertEquals(jim, game.getCollectedItems().get(0));
 	}
-	
+
 	@Test
 	void testGetCollectedItemsWithMultipleItems() {
 		Game game = new Game();
-		Item jim = new Item("A", "AB");
-		Item tim = new Item("A", "AB");
-		Item slim = new Item("A", "AB");
+		Item jim = new Item("Aaa", "ABaa");
+		Item tim = new Item("Aaaa", "ABaaaa");
+		Item slim = new Item("Aaaaaaa", "ABaaaaaa");
 		game.getCollectedItems().add(jim);
 		game.getCollectedItems().add(tim);
 		game.getCollectedItems().add(slim);

@@ -1,6 +1,6 @@
 package adventuregame.tests.location;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,21 +10,21 @@ class TestGetItems {
 
 	@Test
 	void testGetItemsWithOneEntry() {
-		Location place = new Location("place", "place.jpg", true, "plunger");
+		Location place = new Location("placea", "placea.jpg", true, "plunger");
 		place.addItem("jim", "boy genius");
 		assertEquals("jim", place.getItems().get(0).getName());
 		assertEquals("boy genius", place.getItems().get(0).getDescription());
 	}
-	
+
 	@Test
 	void testGetItemsWithNoEntry() {
-		Location place = new Location("place", "place.jpg", true, "plunger");
+		Location place = new Location("placeb", "placeb.jpg", true, "fork");
 		assertEquals(0, place.getItems().size());
 	}
-	
+
 	@Test
 	void testGetItemsWithMultipleEntries() {
-		Location place = new Location("place", "place.jpg", true, "plunger");
+		Location place = new Location("placec", "placec.jpg", true, "spork");
 		place.addItem("jim", "boy genius");
 		place.addItem("carl", "Llama lord");
 		assertEquals("jim", place.getItems().get(0).getName());

@@ -1,11 +1,10 @@
 package adventuregame.tests.location;
 
 import static org.junit.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import adventuregame.model.Item;
 import adventuregame.model.Location;
 
 class TestAddPath {
