@@ -1,5 +1,9 @@
 package adventuregame.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * The Class SaveGame
  * 
@@ -8,6 +12,17 @@ package adventuregame.model;
 public class SaveGame {
 
 	private static final String COMMA = ",";
+
+	public void writeFile(Game game, File file) {
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(file);
+			writer.println(this.saveTheGame(game));
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public String saveTheGame(Game game) {
 		String output = "";

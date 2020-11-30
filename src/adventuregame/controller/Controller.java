@@ -1,5 +1,6 @@
 package adventuregame.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import adventuregame.model.Game;
@@ -20,8 +21,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class Controller {
+
+	private static final String SECOND_FILTER = "*.advgme";
+
+	private static final String FIRST_FILTER = "Adventure Game (*.advgme)";
 
 	private static final String COLON_SPACE = ": ";
 
@@ -130,6 +137,11 @@ public class Controller {
 
 	@FXML
 	public void loadGame(ActionEvent event) {
+		FileChooser chooser = new FileChooser();
+	    chooser.setTitle("Load Game");
+	    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(FIRST_FILTER, SECOND_FILTER);
+        chooser.getExtensionFilters().add(extFilter);
+	    File file = chooser.showOpenDialog(new Stage());
 		
 		this.titleLabel.setVisible(false);
 		this.loadGameButton.setVisible(false);
@@ -147,7 +159,11 @@ public class Controller {
 
 	@FXML
 	public void loadGameMenu(ActionEvent event) {
-
+		FileChooser chooser = new FileChooser();
+	    chooser.setTitle("Load Game");
+	    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(FIRST_FILTER, SECOND_FILTER);
+        chooser.getExtensionFilters().add(extFilter);
+	    File file = chooser.showOpenDialog(new Stage());
 	}
 
 	@FXML
@@ -174,8 +190,15 @@ public class Controller {
 
 	@FXML
 	public void saveGameMenu(ActionEvent event) {
+		FileChooser chooser = new FileChooser();
+	    chooser.setTitle("Save Game");
+	    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(FIRST_FILTER, SECOND_FILTER);
+        chooser.getExtensionFilters().add(extFilter);
+	    File file = chooser.showSaveDialog(new Stage());
 		SaveGame saveGame = new SaveGame();
-		System.out.println(saveGame.saveTheGame(this.game));
+        if (file != null) {
+            saveGame.writeFile(this.game, file);
+        }
 	}
 
 	@FXML
