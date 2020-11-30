@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import adventuregame.model.Game;
 import adventuregame.model.Item;
+import adventuregame.model.LoadGame;
 import adventuregame.model.Location;
 import adventuregame.model.SaveGame;
 import javafx.event.ActionEvent;
@@ -142,7 +143,9 @@ public class Controller {
 	    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(FIRST_FILTER, SECOND_FILTER);
         chooser.getExtensionFilters().add(extFilter);
 	    File file = chooser.showOpenDialog(new Stage());
-		
+	    LoadGame loadGame = new LoadGame();
+	    this.game = loadGame.loadGame(file);
+	    this.update();
 		this.titleLabel.setVisible(false);
 		this.loadGameButton.setVisible(false);
 		this.createGameButton.setVisible(false);
@@ -164,6 +167,9 @@ public class Controller {
 	    FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(FIRST_FILTER, SECOND_FILTER);
         chooser.getExtensionFilters().add(extFilter);
 	    File file = chooser.showOpenDialog(new Stage());
+	    LoadGame loadGame = new LoadGame();
+	    this.game = loadGame.loadGame(file);
+	    this.update();
 	}
 
 	@FXML

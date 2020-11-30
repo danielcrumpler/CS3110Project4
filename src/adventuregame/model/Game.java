@@ -67,6 +67,7 @@ public class Game {
 		newWorld.addLocation("The Beach", "images/beach.jpg", true, "Plank");
 		newWorld.getLocations().get(0).addItem("Sea Shell", "A sea shell");
 		newWorld.getLocations().get(0).addPath("The Path");
+		newWorld.getLocations().get(0).addPath("The End");
 		newWorld.addLocation("The Path", "images/path.jpg", true, "Axe");
 		newWorld.getLocations().get(1).addItem("Plank", "A plank");
 		newWorld.getLocations().get(1).addPath("The Beach");
@@ -76,6 +77,7 @@ public class Game {
 		newWorld.getLocations().get(2).addItem("Napkin", "A paper napkin that looks to be trash.");
 		newWorld.getLocations().get(2).addItem("Axe", "A metal axe.");
 		newWorld.getLocations().get(2).addPath("The Path");
+		newWorld.addLocation("The End", "images/end.jpg", true, "Sea Shell");
 		this.world = newWorld;
 		this.currentLocation = this.world.getLocations().get(2);
 	}
