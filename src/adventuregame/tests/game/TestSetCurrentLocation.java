@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import adventuregame.model.Game;
 
-class TestLoadWorldOne {
+class TestSetCurrentLocation {
 
 	@Test
-	void testLoadWorldOne() {
+	void testSetCurrentLocationToNull() {
 		Game game = new Game();
-		game.loadWorldOne();
-		assertEquals("The Street", game.getCurrentLocation().getName());
+		assertThrows(IllegalArgumentException.class, () -> { game.setCurrentLocation(null);});
 	}
 
 }

@@ -44,6 +44,9 @@ public class Game {
 	 * @param location location to be set
 	 */
 	public void setCurrentLocation(Location location) {
+		if (location == null) {
+			throw new IllegalArgumentException();
+		}
 		this.currentLocation = location;
 	}
 	
