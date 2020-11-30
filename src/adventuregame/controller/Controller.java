@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import adventuregame.model.Game;
 import adventuregame.model.Item;
 import adventuregame.model.Location;
+import adventuregame.model.SaveGame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -173,7 +174,8 @@ public class Controller {
 
 	@FXML
 	public void saveGameMenu(ActionEvent event) {
-
+		SaveGame saveGame = new SaveGame();
+		System.out.println(saveGame.saveTheGame(this.game));
 	}
 
 	@FXML
